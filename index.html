@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+</head>
+<body>
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <h2>Выберите никнейм</h2>
+
+      <form id="auth-form">
+        <input
+          id="nickname-input"
+          type="text"
+          placeholder="Введите никнейм"
+          autocomplete="off"
+        >
+
+        <p id="auth-error" class="error hidden"></p>
+
+        <button type="submit">Продолжить</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="chat" class="chat hidden">
+    <aside class="users-panel">
+      <h2>Пользователи</h2>
+      <ul id="users-list"></ul>
+    </aside>
+
+    <main class="messages-panel">
+      <div id="messages-list" class="messages-list"></div>
+
+      <form id="message-form" class="message-form">
+        <input
+          id="message-input"
+          type="text"
+          placeholder="Введите сообщение"
+          autocomplete="off"
+        >
+        <button type="submit">Отправить</button>
+      </form>
+    </main>
+  </div>
+
+  <div id="connection-status" class="connection-status hidden">
+    Соединение потеряно
+  </div>
+</body>
+</html>
