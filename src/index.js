@@ -39,20 +39,21 @@ function handleMessage(event) {
   }
 
   if (data.type === 'send') {
-    renderMessage(
-      {
-        user: {
-          id: currentUserId,
-          name: currentNickname,
-        },
-        message: data.message,
-      },
-      currentUserId
-    );
+  const author = data.user ?? {
+    id: 'unknown',
+    name: 'Неизвестный пользователь',
+  };
 
-    return;
-  }
+  renderMessage(
+    {
+      user: author,
+      message: data.message,
+    },
+    currentUserId
+  );
 
+  return;
+}
   console.warn('Неизвестный тип сообщения:', data.type);
 }
 
@@ -124,6 +125,10 @@ function initMessageForm() {
     const sent = sendMessage(socket, {
       type: 'send',
       message,
+      user: {
+        id: currentUserId,
+        name: currentNickname,
+      },
     });
 
     if (sent) {
